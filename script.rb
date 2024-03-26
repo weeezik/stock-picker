@@ -12,13 +12,14 @@ def stock_picker(stock_prices)
   puts "Buy price is: #{buy_stock_price}"
   sell_stock_price = stock_prices.max
   puts "Sell price is: #{sell_stock_price}"
-  # binding.pry
-  stock_prices.each_with_index do |_stock_value, _day|
-    # binding.pry
-    while stock_prices.index(buy_stock_price) < stock_prices.index(sell_stock_price)
-      # binding.pry
-      p stock_prices.minmax
-      # binding.pry
+  stock_prices.each do |stock|
+    stock_prices.each do |substock|
+      next if stock >= substock # for example, if 17 is less than 3 (or equal to itself) this iteration is skipped
+      next if stock_prices.index(substock) < stock_prices.index(stock)
+
+      puts "Stock in question is #{stock}. And is being substracted
+      from #{substock} to output (i.e., profit): #{substock - stock}"
+      # find highest substock-stock value
     end
   end
 end
