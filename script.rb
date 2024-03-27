@@ -8,33 +8,29 @@ require 'pry-byebug'
 stock_prices = [17, 3, 6, 9, 15, 8, 6, 1, 10]
 
 def stock_picker(stock_prices)
-  buy_stock_price = stock_prices.min
-  puts "Buy price is: #{buy_stock_price}"
-  sell_stock_price = stock_prices.max
-  puts "Sell price is: #{sell_stock_price}"
   max_profit = 0
+  max_profit_arr = []
   stock_prices.each do |stock|
     stock_prices.each do |substock|
       next if stock >= substock # for example, if 17 is less than 3 (or equal to itself) this iteration is skipped
       next if stock_prices.index(substock) < stock_prices.index(stock)
 
-      puts "Stock in question is #{stock}. And is being substracted
-      from #{substock} to output (i.e., profit): #{substock - stock}"
-      # attempt at iterating, then returning maximum profit value
+      # puts "Stock in question is #{stock}. And is being substracted
+      # from #{substock} to output (i.e., profit): #{substock - stock}"
+      # returns maximum profit value
       this_profit = substock - stock
       if this_profit > max_profit
         max_profit = this_profit
-        max_profit
+        max_profit_arr = [stock_prices.index(stock), stock_prices.index(substock)]
       else
-        max_profit
+        max_profit_arr
       end
-
-      puts "This is the max profit: #{max_profit}"
 
       # find highest substock-stock value
       # return array that has the [stock_prices.index(stock), stock_prices.index(substock)]
     end
   end
+  puts "Optimal buy/sell window: #{max_profit_arr}"
 end
 
 puts stock_picker(stock_prices)
