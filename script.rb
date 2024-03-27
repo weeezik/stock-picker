@@ -5,7 +5,7 @@
 # best time to buy has to come before best time to buy, else [run it a different way]
 
 require 'pry-byebug'
-stock_prices = [17, 3, 6, 9, 15, 8, 6, 1, 10]
+stock_prices = [17, 3, 6, 9, 15, 8, 6, 6, 10]
 
 def stock_picker(stock_prices)
   max_profit = 0
@@ -30,7 +30,7 @@ def stock_picker(stock_prices)
       # return array that has the [stock_prices.index(stock), stock_prices.index(substock)]
     end
   end
-  puts "Optimal buy/sell window: #{max_profit_arr}"
+  puts "Optimal buy window: Day #{max_profit_arr[0]} \nOptimal sell window: Day #{max_profit_arr[1]} \nProfit: $#{max_profit}"
 end
 
 puts stock_picker(stock_prices)
